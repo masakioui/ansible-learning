@@ -6,11 +6,20 @@
           name: nginx
           state: latest
         become: yes
+
   - hosts: database
+    become: yes
     tasks:
-      - name: install mysql-server
-        yum: name=mysql-server state=latest update_cache=yes
-        become: true
+      - name: Install MySQL 5.7 repo
+        yum: name=http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm state=present
+
+      - name: Install MySQL 5.7
+        yum: pkg={{ item }}
+        with_items:
+        - mysql-community-server
+        - mysql-community-client
+        - MySQL-python
+
   - hosts: webserver
     become: true
     tasks:
