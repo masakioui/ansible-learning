@@ -5,3 +5,4 @@
         yum:
           name: nginx
           state: latest
+        become: yes

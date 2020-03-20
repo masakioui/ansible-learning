@@ -9,4 +9,6 @@ sudo yum install telnet nc nmap tcpdump bind-utils htop wget git -y
 ```
 cd ~
 git clone https://github.com/masakioui/ansible-learning.git
+cd ansible-learning
+git submodule update --init
 ```
